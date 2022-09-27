@@ -4,17 +4,33 @@ import './App.css';
 function App() {
   //state declaration
   const [attendees, setAttendees] = useState([]);
-  const [form, setFormData] = useState({});
+  const [form, setFormData] = useState({
+    fullName: '',
+    emailAddress: '',
+    age: '',
+    mobileNumber: '',
+    gender:''
+  });
 
+  //get all event-goers
   const fetchData = () => {
     fetch("http://localhost:4000/users")
     .then(res => res.json())
     .then(data => {setAttendees(data)})
   }
+  // const fetchData = async () => {
+  //   const response = await fetch("https://jsonplaceholder.typicode.com/users")
+  //   const data = await response.json()
+  //   setAttendees(data)
+  // }
 
   useEffect(() => {
     fetchData()
   }, []);
+
+  //create an event-goer
+
+  //remove an event-goer
 
   const handleSubmit = () => {
 
@@ -24,29 +40,25 @@ function App() {
       <div className='row'>
         <div className='col-12 col-md-5 col-lg-5'>
           <h1>Register for the Event</h1>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Full Name"/>
-          </div>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
-          </div>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"/>
-          </div>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Age</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Age"/>
-          </div>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Gender</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Gender"/>
-          </div>
-          <div className="col-12">
-            <button class="btn btn-primary" onClick={handleSubmit} type="submit">Submit Request</button>
-          </div>
+          <form>
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Full Name"/>
+
+            <label for="emailAddress" class="form-label">Email Address</label>
+            <input type="text" class="form-control" placeholder="name@example.com"/>
+
+            <label for="emailAddress" class="form-label">Age</label>
+            <input type="text" class="form-control" placeholder="age"/>
+
+            <label for="emailAddress" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="mobile number 07..."/>
+
+            <label for="emailAddress" class="form-label">Gender</label>
+            <input type="text" class="form-control" placeholder="gender"/>
+
+            <button class="btn btn-primary" onClick={handleSubmit} type="submit">Submit Registration</button>
+          </form>
+          
         </div>
         <div className='col-12 col-md-5 col-lg-7'>
           <h1>List of confirmed attendees</h1>

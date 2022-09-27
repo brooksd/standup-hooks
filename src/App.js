@@ -19,7 +19,7 @@ function App() {
     .then(data => {setAttendees(data)})
   }
   // const fetchData = async () => {
-  //   const response = await fetch("https://jsonplaceholder.typicode.com/users")
+  //   const response = await fetch("https://localhost:4000/users")
   //   const data = await response.json()
   //   setAttendees(data)
   // }
@@ -40,23 +40,23 @@ function App() {
       <div className='row'>
         <div className='col-12 col-md-5 col-lg-5'>
           <h1>Register for the Event</h1>
-          <form>
-            <label for="fullName" class="form-label">Full Name</label>
+          <form >
+            <label className="form-label">Full Name</label>
             <input type="text" class="form-control" placeholder="Full Name"/>
 
-            <label for="emailAddress" class="form-label">Email Address</label>
+            <label className="form-label">Email Address</label>
             <input type="text" class="form-control" placeholder="name@example.com"/>
 
-            <label for="age" class="form-label">Age</label>
+            <label className="form-label">Age</label>
             <input type="text" class="form-control" placeholder="age"/>
 
-            <label for="number" class="form-label">Mobile Number</label>
+            <label className="form-label">Mobile Number</label>
             <input type="text" class="form-control" placeholder="mobile number 07..."/>
 
-            <label for="gender" class="form-label">Gender</label>
+            <label className="form-label">Gender</label>
             <input type="text" class="form-control" placeholder="gender"/>
 
-            <button class="btn btn-primary" onClick={handleSubmit} type="submit">Submit Registration</button>
+            <button className="btn btn-primary" onClick={handleSubmit} type="submit">Submit Registration</button>
           </form>
           
         </div>
@@ -64,7 +64,7 @@ function App() {
           <h1>List of confirmed attendees</h1>
           <ul>
             {attendees.map( attendee => (
-              <li key={attendee.id}>{attendee.fullName}</li>
+              <li key={attendee.id}>{attendee.fullName} {attendee.mobileNumber} <button className='btn btn-danger'>Delete</button></li>
             ))}
           </ul>
           

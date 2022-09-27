@@ -47,13 +47,13 @@ function App() {
             <label for="emailAddress" class="form-label">Email Address</label>
             <input type="text" class="form-control" placeholder="name@example.com"/>
 
-            <label for="emailAddress" class="form-label">Age</label>
+            <label for="age" class="form-label">Age</label>
             <input type="text" class="form-control" placeholder="age"/>
 
-            <label for="emailAddress" class="form-label">Mobile Number</label>
+            <label for="number" class="form-label">Mobile Number</label>
             <input type="text" class="form-control" placeholder="mobile number 07..."/>
 
-            <label for="emailAddress" class="form-label">Gender</label>
+            <label for="gender" class="form-label">Gender</label>
             <input type="text" class="form-control" placeholder="gender"/>
 
             <button class="btn btn-primary" onClick={handleSubmit} type="submit">Submit Registration</button>

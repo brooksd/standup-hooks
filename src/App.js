@@ -4,12 +4,14 @@ import './App.css';
 function App() {
   //state declaration
   const [attendees, setAttendees] = useState([]);
-  const [form, setFormData] = useState({
+  const [formData, setFormData] = useState({
+
     fullName: '',
     emailAddress: '',
     age: '',
     mobileNumber: '',
     gender:''
+
   });
 
   //get all event-goers
@@ -29,10 +31,26 @@ function App() {
   }, []);
 
   //create an event-goer
+  function handleChange(event) {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  }
 
   //remove an event-goer
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:4000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }, 
+      body: JSON.stringify({
+
+      })
+    })
 
   }
   return (
@@ -40,23 +58,23 @@ function App() {
       <div className='row'>
         <div className='col-12 col-md-5 col-lg-5'>
           <h1>Register for the Event</h1>
-          <form >
+          <form onSubmit={handleSubmit}>
             <label className="form-label">Full Name</label>
-            <input type="text" class="form-control" placeholder="Full Name"/>
+            <input type="text" class="form-control" placeholder="Full Name" onChange={handleChange}/>
 
             <label className="form-label">Email Address</label>
-            <input type="text" class="form-control" placeholder="name@example.com"/>
+            <input type="text" class="form-control" placeholder="name@example.com" onChange={handleChange}/>
 
             <label className="form-label">Age</label>
-            <input type="text" class="form-control" placeholder="age"/>
+            <input type="text" class="form-control" placeholder="age" onChange={handleChange}/>
 
             <label className="form-label">Mobile Number</label>
-            <input type="text" class="form-control" placeholder="mobile number 07..."/>
+            <input type="text" class="form-control" placeholder="mobile number 07..." onChange={handleChange}/>
 
             <label className="form-label">Gender</label>
-            <input type="text" class="form-control" placeholder="gender"/>
+            <input type="text" class="form-control" placeholder="gender" onChange={handleChange} />
 
-            <button className="btn btn-primary" onClick={handleSubmit} type="submit">Submit Registration</button>
+            <button className="btn btn-primary" type="submit">Submit Registration</button>
           </form>
           
         </div>

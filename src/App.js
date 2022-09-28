@@ -20,6 +20,16 @@ function App() {
     .then(res => res.json())
     .then(data => {setAttendees(data)})
   }
+
+	function deleteList(id) {
+    fetch(`http://localhost:4000/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then(() => {
+        fetchData()
+      });
+  }
   // const fetchData = async () => {
   //   const response = await fetch("https://localhost:4000/users")
   //   const data = await response.json()
@@ -82,7 +92,7 @@ function App() {
           <h1>List of confirmed attendees</h1>
           <ul>
             {attendees.map( attendee => (
-              <li key={attendee.id}>{attendee.fullName} {attendee.mobileNumber} <button className='btn btn-danger'>Delete</button></li>
+              <li key={attendee.id}>{attendee.fullName} {attendee.mobileNumber} <button className='btn btn-danger' onClick={() => deleteList(attendee.id)}>Delete</button></li>
             ))}
           </ul>
           

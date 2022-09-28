@@ -47,9 +47,9 @@ function App() {
       headers: {
         "Content-Type": "application/json"
       }, 
-      body: JSON.stringify({
-
-      })
+      body: JSON.stringify(
+				formData
+      )
     })
 
   }
@@ -60,19 +60,19 @@ function App() {
           <h1>Register for the Event</h1>
           <form onSubmit={handleSubmit}>
             <label className="form-label">Full Name</label>
-            <input type="text" class="form-control" placeholder="Full Name" onChange={handleChange}/>
+            <input type="text" class="form-control" name='fullName' value={formData.fullName} placeholder="Full Name" onChange={handleChange}/>
 
             <label className="form-label">Email Address</label>
-            <input type="text" class="form-control" placeholder="name@example.com" onChange={handleChange}/>
+            <input type="text" class="form-control" name='emailAddress' value={formData.emailAddress} placeholder="name@example.com" onChange={handleChange}/>
 
             <label className="form-label">Age</label>
-            <input type="text" class="form-control" placeholder="age" onChange={handleChange}/>
+            <input type="text" class="form-control" name='age' value={formData.age} placeholder="age" onChange={handleChange}/>
 
             <label className="form-label">Mobile Number</label>
-            <input type="text" class="form-control" placeholder="mobile number 07..." onChange={handleChange}/>
+            <input type="text" class="form-control" name='mobileNumber' value={formData.mobileNumber} placeholder="mobile number 07..." onChange={handleChange}/>
 
             <label className="form-label">Gender</label>
-            <input type="text" class="form-control" placeholder="gender" onChange={handleChange} />
+            <input type="text" class="form-control" name='gender' value={formData.gender} placeholder="gender" onChange={handleChange} />
 
             <button className="btn btn-primary" type="submit">Submit Registration</button>
           </form>

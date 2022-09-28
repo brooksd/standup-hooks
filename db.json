@@ -1,28 +1,12 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "fullName": "Jameson Ojode",
-            "emailAddress": "jangili@example.com",
-            "mobileNumber": "0711225368",
-            "age": "25",
-            "gender": "male"
-        },
-        {
-            "id": 2,
-            "fullName": "Tanqarey Ombiji",
-            "emailAddress": "folako@example.com",
-            "mobileNumber": "0766556473",
-            "age": "27",
-            "gender": "male"
-        },
-        {
-            "id": 3,
-            "fullName": "Folabii Mokenom",
-            "emailAddress": "folabii@example.com",
-            "mobileNumber": "07388249823",
-            "age": "21",
-            "gender": "female"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Jameson Ojode",
+      "emailAddress": "jangili@example.com",
+      "mobileNumber": "0711225368",
+      "age": "25",
+      "gender": "male"
+    }
+  ]
 }

@@ -1,15 +1,38 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useReducer} from 'react';
 import './App.css';
 
+
+// function reducer(state, action){
+//   switch (action.type){
+//     case "remove":
+//       return {remove: state.remove -1}
+//       default:
+//         return state
+//   }
+
+// }
 function App() {
   //state declaration
   const [attendees, setAttendees] = useState([]);
   const [form, setFormData] = useState({});
 
+  // const [list, setList] = useState([]);
+
+  function deleteList(id) {
+    fetch(`http://localhost:3200/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then(() => {
+        const del = attendees.filter((users) => users.id !== id);
+        setAttendees(del);
+      });
+  }
+
   const fetchData = () => {
-    fetch("http://localhost:4000/users")
+    fetch("http://localhost:3200/users")
     .then(res => res.json())
-    .then(data => {setAttendees(data)})
+    .then(data => setAttendees(data))
   }
 
   useEffect(() => {
@@ -18,7 +41,28 @@ function App() {
 
   const handleSubmit = () => {
 
+    // fetch("http://localhost:4000/users", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ ...obj })
+    // }).then(() => fetchData())
   }
+
+  // function handleSubmit(obj) {
+  //   console.log(obj);
+  //   fetch("http://localhost:8001/transactions", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ ...obj, "amount": parseInt(obj.amount) })
+  //   }).then(() => fetcher())
+  // }
+
+    // const [state, dispatch] = useReducer(reducer, {remove: []})
+
+    // function remove(){
+    //   dispatch({})
+
+    // }
   return (
     <div className="container">
       <div className='row'>
@@ -52,7 +96,10 @@ function App() {
           <h1>List of confirmed attendees</h1>
           <ul>
             {attendees.map( attendee => (
-              <li key={attendee.id}>{attendee.fullName}</li>
+              <li>
+                {attendee.fullName}
+                <button class="btn btn-primary" onClick={() => deleteList(attendee.id)}>Remove User</button>
+              </li>
             ))}
           </ul>
           
